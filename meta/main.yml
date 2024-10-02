@@ -1,0 +1,13 @@
+galaxy_info:
+  author: Asteriosoft DevOps Team
+  description: Teleport service installation
+  company: Asteriosoft
+
+  license: MIT
+
+  min_ansible_version: 2.3
+
+  galaxy_tags: []
+
+dependencies: []
+

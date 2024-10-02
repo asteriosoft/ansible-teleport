@@ -1,0 +1,14 @@
+---
+- name: Create systemd unit
+  template:
+    src: 'teleport.unit.j2'
+    dest: '/etc/systemd/system/teleport.service'
+    owner: root
+    group: root
+    mode: 0644
+  register: systemd
+
+- name: Systemd reload
+  systemd:
+    daemon_reload: yes
+  when: systemd.changed

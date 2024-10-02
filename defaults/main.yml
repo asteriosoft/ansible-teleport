@@ -1,0 +1,68 @@
+---
+teleport_version: "16.4.2"
+teleport_package: "teleport"  # use teleport-ent for enterprise edition
+teleport_url: "https://cdn.teleport.dev/{{ teleport_package }}-v{{ teleport_version }}-linux-amd64-bin.tar.gz"
+teleport_config_path: "/etc/teleport.yaml"
+teleport_pidfile: "/run/teleport.pid"
+teleport_start_options: ""  #  teleport start --help
+teleport_nodename: "{{ ansible_hostname }}"
+teleport_auth_token: ""
+#teleport_proxy_server: "teleport-proxy.example.com:443"
+#teleport_auth_server: "10.1.0.5:3025"
+#teleport_advertise_ip: "{{ ansible_host }}"
+#teleport_diag_addr: "127.0.0.1:3000"
+teleport_log_output: "/var/log/teleport/teleport.log"
+teleport_log_level: "INFO"
+teleport_log_format: "text"
+
+# additional global configuration
+# https://goteleport.com/docs/reference/config/#instance-wide-settings
+# https://goteleport.com/docs/reference/config/#auth-service
+# teleport_global_config: |
+#   connection_limits:
+#     max_connections: 1000
+#     max_users: 250
+#   storage:
+#     type: sqlite
+
+# proxy service configuration
+# https://goteleport.com/docs/reference/config/#proxy-service
+# teleport_proxy_service_config: |
+#   enabled: yes
+#   listen_addr: 0.0.0.0:3023
+#   tunnel_listen_addr: 0.0.0.0:3024
+#   peer_listen_addr: 0.0.0.0:3021
+#   web_listen_addr: 0.0.0.0:3080
+
+# auth service configuration
+# https://goteleport.com/docs/reference/config/#auth-service
+# teleport_auth_service_config: |
+#   enabled: yes
+#   cluster_name: "main"
+#   authentication:
+#     type: local
+#   require_session_mfa: false
+
+# ssh service configuration
+# https://goteleport.com/docs/reference/config/#ssh-service
+# teleport_ssh_service_config: |
+#   enabled: yes
+#   listen_addr: 0.0.0.0:3022
+
+# app service configuration
+# https://goteleport.com/docs/reference/config/#application-service
+# teleport_app_service_config: |
+#   enabled: yes
+#   apps:
+#   - name: "grafana"
+#     uri: "http://10.0.1.27:3000"
+
+# db service configuration
+# https://goteleport.com/docs/reference/config/#database-service
+# teleport_db_service_config: |
+#   enabled: yes
+#   databases:
+#   - name: "mysql-test"
+#     description: "Test mysql database"
+#     protocol: "mysql"
+#     uri: "10.0.1.26:3306"

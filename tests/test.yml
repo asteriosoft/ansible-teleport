@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+
+  vars:
+    teleport_version: "16.4.2"
+    teleport_proxy_server: "teleport-proxy.example.com:443"
+    teleport_auth_token: "token"
+    teleport_config_path: "/etc/teleport.new.yaml"
+    teleport_ssh_service_config: |
+      enabled: yes
+      listen_addr: 0.0.0.0:3022
+    teleport_db_service_config: |
+      enabled: yes
+      databases:
+      - name: "mysql-test"
+        description: "Test mysql database"
+        protocol: "mysql"
+        uri: "10.0.1.26:3306"
+
+  roles:
+    - { role: ../../teleport }

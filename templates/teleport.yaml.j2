@@ -1,0 +1,62 @@
+version: v3
+teleport:
+  nodename: {{ teleport_nodename }}
+  pid_file: {{ teleport_pidfile }}
+  data_dir: /var/lib/teleport
+{% if teleport_auth_token %}  
+  auth_token: "{{ teleport_auth_token }}"
+{% endif %}
+{% if teleport_advertise_ip | default(false) %}
+  advertise_ip: "{{ teleport_advertise_ip }}"
+{% endif %}
+{% if teleport_diag_addr | default(false) %}
+  diag_addr: "{{ teleport_diag_addr }}"
+{% endif %}
+{% if teleport_proxy_server | default(false) %}
+  proxy_server: "{{ teleport_proxy_server }}"
+{% elif teleport_auth_server | default(false) %}
+  auth_server: "{{ teleport_auth_server }}"
+{% endif %}
+  log:
+    output: {{ teleport_log_output }}
+    severity: {{ teleport_log_level }}
+    format:
+      output: {{ teleport_log_format }}
+{% if teleport_global_config | default(false) %}
+{{ teleport_global_config | indent(width=2, first=True) }}
+{% endif %}
+
+proxy_service:
+{% if teleport_proxy_service_config | default(false) %}
+  {{ teleport_proxy_service_config | indent(width=2, first=True) }}
+{% else %}
+  enabled: "no"
+{% endif %}
+
+auth_service:
+{% if teleport_auth_service_config | default(false) %}
+  {{ teleport_auth_service_config | indent(width=2, first=True) }}
+{% else %}
+  enabled: "no"
+{% endif %}
+
+ssh_service:
+{% if teleport_ssh_service_config | default(false) %}
+  {{ teleport_ssh_service_config | indent(width=2, first=True) }}
+{% else %}
+  enabled: "no"
+{% endif %}
+
+app_service:
+{% if teleport_app_service_config | default(false) %}
+  {{ teleport_app_service_config | indent(width=2, first=True) }}
+{% else %}
+  enabled: "no"
+{% endif %}
+
+db_service:
+{% if teleport_db_service_config | default(false) %}
+{{ teleport_db_service_config | indent(width=2, first=True) }}
+{% else %}
+  enabled: "no"
+{% endif %}

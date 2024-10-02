@@ -1,0 +1,15 @@
+[Unit]
+Description=Teleport Service
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+ExecStart=/usr/local/bin/teleport start --config {{ teleport_config_path }} --pid-file={{ teleport_pidfile }} {{ teleport_start_options }}
+ExecReload=/bin/sh -c "exec pkill -HUP -L -F {{ teleport_pidfile }}"
+PIDFile={{ teleport_pidfile }}
+LimitNOFILE=524288
+
+[Install]
+WantedBy=multi-user.target

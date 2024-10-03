@@ -20,9 +20,9 @@ Example Playbook
     teleport_proxy_server: "teleport.example.com:443"
     teleport_auth_token: "token"
     teleport_ssh_service_config: |
-      enabled: yes
+      enabled: "yes"
     teleport_db_service_config: |
-      enabled: yes
+      enabled: "yes"
       databases:
       - name: "mysql-prod"
         description: "Production mysql database"

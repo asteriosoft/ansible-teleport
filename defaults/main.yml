@@ -11,7 +11,7 @@ teleport_auth_token: ""
 #teleport_auth_server: "10.1.0.5:3025"
 #teleport_advertise_ip: "{{ ansible_host }}"
 #teleport_diag_addr: "127.0.0.1:3000"
-teleport_log_output: "/var/log/teleport/teleport.log"
+teleport_log_dir: "/var/log/teleport"
 teleport_log_level: "INFO"
 teleport_log_format: "text"
 

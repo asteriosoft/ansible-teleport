@@ -1,8 +1,8 @@
 version: v3
 teleport:
-  nodename: {{ teleport_nodename }}
-  pid_file: {{ teleport_pidfile }}
-  data_dir: /var/lib/teleport
+  nodename: "{{ teleport_nodename }}"
+  pid_file: "{{ teleport_pidfile }}"
+  data_dir: "/var/lib/teleport"
 {% if teleport_auth_token %}  
   auth_token: "{{ teleport_auth_token }}"
 {% endif %}
@@ -18,10 +18,10 @@ teleport:
   auth_server: "{{ teleport_auth_server }}"
 {% endif %}
   log:
-    output: {{ teleport_log_output }}
-    severity: {{ teleport_log_level }}
+    output: "{{ teleport_log_dir }}/teleport.log"
+    severity: "{{ teleport_log_level }}"
     format:
-      output: {{ teleport_log_format }}
+      output: "{{ teleport_log_format }}"
 {% if teleport_global_config | default(false) %}
 {{ teleport_global_config | indent(width=2, first=True) }}
 {% endif %}

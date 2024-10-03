@@ -7,10 +7,10 @@
     teleport_auth_token: "token"
     teleport_config_path: "/etc/teleport.new.yaml"
     teleport_ssh_service_config: |
-      enabled: yes
-      listen_addr: 0.0.0.0:3022
+      enabled: "yes"
+      listen_addr: "0.0.0.0:3022"
     teleport_db_service_config: |
-      enabled: yes
+      enabled: "yes"
       databases:
       - name: "mysql-test"
         description: "Test mysql database"
